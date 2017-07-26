@@ -4,9 +4,9 @@ using namespace std;
 
 
 ComponentIterator::ComponentIterator(MenuComponent *m /* = 0 */) :
-        istack_(stack<IterNode*>()), components_{menuComponent} {
+        istack_(stack<IterNode*>()), components_{m} {
     if (menuComponent != nullptr) {
-        istack_.push(new IterNode(menuComponent, 0));
+        istack_.push(new IterNode(m, 0));
     }
 }
 
