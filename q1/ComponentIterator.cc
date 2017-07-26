@@ -3,11 +3,14 @@
 using namespace std;
 
 
-ComponentIterator::ComponentIterator( MenuComponent *m) : components_{m} {
-  begin();
+ComponentIterator::ComponentIterator(MenuComponent *m /* = 0 */) :
+        istack_(stack<IterNode*>()), components_{menuComponent} {
+    if (menuComponent != nullptr) {
+        istack_.push(new IterNode(menuComponent, 0));
+    }
 }
 
-ComponentIterator::IterNode::IterNode(MenuComponent *m) : cursor_{-1}, node_{m} {}
+ComponentIterator::IterNode::IterNode(MenuComponent *m, int i) : cursor_{i}, node_{m} {}
 
 bool ComponentIterator::hasNext() {
   while ( !istack_.empty() ) {
@@ -26,7 +29,7 @@ void ComponentIterator::begin() {
     delete istack_.top();
     istack_.pop();
   }
-  istack_.emplace( new IterNode( components_ ) );
+  istack_.push( new IterNode( components_, 0 ) );
 }
 
 void operator++(ComponentIterator &iter) {
@@ -37,13 +40,13 @@ void operator++(ComponentIterator &iter) {
     iter.istack_.pop();
     if (top->cursor_ == -1) {
         top->cursor_ += 1;
-        iter.istack_.emplace(top);
+        iter.istack_.push(top);
         return;
     }
     MenuComponent *elem = top->node_->getChild(top->cursor_);
     top->cursor_ += 1;
-    iter.istack_.emplace(top);
-    iter.istack_.emplace(new ComponentIterator::IterNode(elem));
+    iter.istack_.push(top);
+    iter.istack_.push(new ComponentIterator::IterNode(elem, -1));
     ++iter;
 }
 
