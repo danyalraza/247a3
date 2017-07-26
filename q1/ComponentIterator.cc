@@ -21,7 +21,7 @@ bool ComponentIterator::hasNext() {
   return false;
 }
 
-ComponentIterator::begin() {
+void ComponentIterator::begin() {
   while ( !istack_.empty() ) {
     delete istack_.top();
     istack_.pop();
@@ -44,7 +44,7 @@ void operator++(ComponentIterator &iter) {
     top->cursor_ += 1;
     iter.istack_.emplace(top);
     iter.istack_.emplace(new ComponentIterator::IterNode(elem));
-    ++it;
+    ++iter;
 }
 
 MenuComponent* ComponentIterator::operator->() const {
