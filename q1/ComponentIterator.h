@@ -31,13 +31,13 @@ class ComponentIterator : public std::iterator< std::forward_iterator_tag, MenuC
     void begin();                   // Resets the iterator to the beginning
 
   private:
-    MenuComponent* components_;
+    // MenuComponent* components_;
     struct IterNode {
       MenuComponent* node_;
       int cursor_;
       IterNode(MenuComponent*, int);
     };
-    std::stack<IterNode*> istack_;
+    std::stack<IterNode*> istack;
 };
 
 bool operator==( const ComponentIterator&, const ComponentIterator& );
