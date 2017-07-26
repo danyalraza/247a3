@@ -47,12 +47,7 @@ void operator++(ComponentIterator &iter) {
     ++iter;
 }
 
-ComponentIterator::~ComponentIterator() {
-  while ( !istack_.empty() ) {
-    delete istack_.top();
-    istack_.pop();
-  }
-}
+ComponentIterator::~ComponentIterator() {}
 
 MenuComponent* ComponentIterator::operator->() const {
     if (istack_.size() == 0) {  return nullptr; }
@@ -60,8 +55,7 @@ MenuComponent* ComponentIterator::operator->() const {
 }
 
 MenuComponent* ComponentIterator::operator*() const {
-  if (istack_.size() == 0) {  return nullptr; }
-  else { return istack_.top()->node_; }
+  return istack_.top()->node_;
 }
 
 bool operator==(const ComponentIterator &iter1, const ComponentIterator &iter2) {
