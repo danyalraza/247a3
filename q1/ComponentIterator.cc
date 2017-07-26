@@ -58,7 +58,7 @@ MenuComponent* ComponentIterator::operator*() const {
 }
 
 bool operator==(const ComponentIterator &iter1, const ComponentIterator &iter2) {
-    if (iter1.istack_.size() == 0 && it1.istack_.size() == 0) {
+    if (iter1.istack_.size() == 0 && iter1.istack_.size() == 0) {
         return true;
     } else if (iter1.istack_.top() == iter2.istack_.top() && iter1.istack_.size() != 0 && iter2.istack_.size() != 0) {
         return true;
