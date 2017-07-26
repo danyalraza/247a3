@@ -3,7 +3,7 @@
 using namespace std;
 
 
-ComponentIterator::ComponentIterator( MenuComponent *m) : components_{m}, istack_(stack<IterNode*>()) {
+ComponentIterator::ComponentIterator( MenuComponent *m) : components_{m} {
   begin();
 }
 
