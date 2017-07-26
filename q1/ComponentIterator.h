@@ -35,7 +35,7 @@ class ComponentIterator : public std::iterator< std::forward_iterator_tag, MenuC
     struct IterNode {
       MenuComponent* node_;
       int cursor_;
-      IterNode(MenuComponent* m);
+      IterNode(MenuComponent*, int);
     };
     std::stack<IterNode*> istack_;
 };
