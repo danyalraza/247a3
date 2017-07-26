@@ -25,17 +25,16 @@ class ComponentIterator : public std::iterator< std::forward_iterator_tag, MenuC
     ComponentIterator( MenuComponent * = nullptr );
     ~ComponentIterator();
     bool hasNext();
-    // ComponentIterator( const ComponentIterator& );
     MenuComponent* operator->() const;          // Returns the current MenuComponent the iterator is on
     MenuComponent* operator* () const;          // Returns the current MenuComponent the iterator is on
     void begin();                   // Resets the iterator to the beginning
 
   private:
-    // MenuComponent* components_;
+    MenuComponent* components_;
     struct IterNode {
       MenuComponent* node_;
       int cursor_;
-      IterNode(MenuComponent*, int);
+      IterNode(MenuComponent*);
     };
     std::stack<IterNode*> istack_;
 };
