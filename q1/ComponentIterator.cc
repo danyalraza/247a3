@@ -47,6 +47,13 @@ void operator++(ComponentIterator &iter) {
     ++iter;
 }
 
+ComponentIterator::~ComponentIterator() {
+  while ( !istack_.empty() ) {
+    delete istack_.top();
+    istack_.pop();
+  }
+}
+
 MenuComponent* ComponentIterator::operator->() const {
     if (istack_.size() == 0) {  return nullptr; }
     else { return istack_.top()->node_; }
