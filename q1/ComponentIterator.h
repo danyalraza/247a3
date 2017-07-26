@@ -37,7 +37,7 @@ class ComponentIterator : public std::iterator< std::forward_iterator_tag, MenuC
       int cursor_;
       IterNode(MenuComponent* m);
     };
-    stack<IterNode*> istack_;
+    std::stack<IterNode*> istack_;
 };
 
 bool operator==( const ComponentIterator&, const ComponentIterator& );
