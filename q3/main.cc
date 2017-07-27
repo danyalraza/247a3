@@ -38,8 +38,10 @@ int main(int argc, char* argv[]) {
     }
     if (argc >= 3) {
       seed = atoi(argv[2]);
-      mt19937 random(seed);
     }
+
+    mt19937 random(seed);
+
       // Read words from file into vector
     ifstream inFile(filename);
     if (!inFile) {
