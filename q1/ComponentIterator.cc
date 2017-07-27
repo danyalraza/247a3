@@ -12,7 +12,7 @@ using namespace std;
 
 ComponentIterator::ComponentIterator(MenuComponent *m) : istack_(stack<IterNode*>()), components_{m} {
     if (m != nullptr) {
-        a = new IterNode(m);
+        IterNode* a = new IterNode(m);
         a->cursor_ = 0;
         istack_.push(a);
     }
@@ -37,7 +37,7 @@ void ComponentIterator::begin() {
     delete istack_.top();
     istack_.pop();
   }
-  a = new IterNode();
+  IterNode* a = new IterNode(components_);
   a->cursor_ = 0;
   istack_.push(a);
 }
@@ -56,7 +56,7 @@ void operator++(ComponentIterator &iter) {
     MenuComponent *elem = top->node_->getChild(top->cursor_);
     top->cursor_ += 1;
     iter.istack_.push(top);
-    iter.istack_.push(new ComponentIterator::IterNode(elem);
+    iter.istack_.push(new ComponentIterator::IterNode(elem));
     ++iter;
 }
 
