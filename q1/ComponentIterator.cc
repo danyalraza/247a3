@@ -75,7 +75,7 @@ bool operator==(const ComponentIterator &iter1, const ComponentIterator &iter2) 
   cout << "calling == operator" << endl;
     if (iter1.istack_.size() == 0 && iter1.istack_.size() == 0) {
         return true;
-    } else if (iter1.istack_.top() == iter2.istack_.top() && iter1.istack_.size() != 0 && iter2.istack_.size() != 0) {
+    } else if (iter1.istack_.size() != 0 && iter2.istack_.size() != 0 && iter1.istack_.top() == iter2.istack_.top() ) {
         return true;
     } else {
         return false;
