@@ -39,14 +39,14 @@ int main(int argc, char* argv[]) {
         return -1;
     }
     if (argc >= 3) {
-    seed = atoi(argv[2]);
-    mt19937 random(seed);
-    // Read words from file into vector
-    ifstream inFile(filename);
+      seed = atoi(argv[2]);
+      mt19937 random(seed);
     }
+      // Read words from file into vector
+    ifstream inFile(filename);
     if (!inFile) {
-        cout << "Error: Could not open file \"" << filename << "\"." << endl;
-        return -1;
+      cout << "Error: Could not open file \"" << filename << "\"." << endl;
+      return -1;
     }
     istream_iterator<string> in_iter(inFile);
     istream_iterator<string> eof;
@@ -57,8 +57,7 @@ int main(int argc, char* argv[]) {
     // Filter words
     remove_copy_if(unfiltered.begin(), unfiltered.end(), back_inserter(words),
         [](string &word) -> bool {
-            bool nonalpha = find_if(word.begin(), word.end(), [](char c) {
-              return !isalpha(c)}) != word.end();
+            bool nonalpha = find_if(word.begin(), word.end(), [](char c) {return !isalpha(c);}) != word.end();
             return (word.length() < 6 || nonalpha);
     });
     if (words.size() == 0) {
@@ -115,7 +114,7 @@ int main(int argc, char* argv[]) {
         }
         else {
           char letter = tolower(guess[0]);
-          if (alreadyGuessed(letter)) {
+          if (alreadyGuessed(guessed, letter)) {
             cout << "You have already guessed letter \"" << letter << "\".\n";
           }
           else {
