@@ -27,7 +27,7 @@ class ComponentIterator : public std::iterator< std::forward_iterator_tag, MenuC
     bool hasNext();
     MenuComponent* operator->() const;          // Returns the current MenuComponent the iterator is on
     MenuComponent* operator* () const;          // Returns the current MenuComponent the iterator is on
-    void begin();                   // Resets the iterator to the beginning
+    // void begin();                   // Resets the iterator to the beginning
 
   private:
     MenuComponent* components_;

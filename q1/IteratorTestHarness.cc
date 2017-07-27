@@ -75,13 +75,13 @@ void sinCleanup( istream & );
 int readInIndex( istream & );
 
 // Throws: SyntaxError if failed to obtain a name.
-// Returns: the name without the double quotation marks. 
+// Returns: the name without the double quotation marks.
 string readInName( istream & );
 
 
 int main() {
-    Op op; // Operation to 
-    
+    Op op; // Operation to
+
     cout << "Test harness for Menu Composite and Iterator" << endl << endl;
 
     // Create a collection of menus to manipulate.
@@ -89,21 +89,21 @@ int main() {
 
     // Enable reading of boolean values "true" and "false".
     cin >> boolalpha;
-    
+
     // Populate the Composite Menu
     for( ;; ) {
 	int index = -1, index2 = -1;
 	string command, name = "";
-	
+
 	cout << "Command: ";
 	cin >> command;
 	if ( cin.fail() ) break;
 	op = convertOp( command );
 	if ( op == DONE ) break;
-    
+
 	try {
 	    switch( op ) {
-	      case MENU: 
+	      case MENU:
 		  index = readInIndex( cin );
 		  name = readInName( cin );
 		  delete menus[index];
@@ -135,7 +135,7 @@ int main() {
 		  menus[index] = new MenuItem ( name, price, calories, veg );
 		  break;
 
-	      case PRINT: 
+	      case PRINT:
 		  index = readInIndex( cin );
 		  if ( !menus[index] ) throw NoMenu( index );
 		  for ( auto it = menus[index]->begin(); it != menus[index]->end(); it++ ) {
@@ -164,7 +164,7 @@ int main() {
         } catch ( MenuComponent::InvalidOp& ) {
             cout << "Command is invalid on Menu Items. No change to menus." << endl;
         } // catch
-        
+
     }
 
     //***********************************************************************************************
@@ -188,7 +188,7 @@ int main() {
 #ifdef STLf
 #include "main_f.cc"
 #endif
-    
+
     for ( int i = 0; i < 10; i++ ) {
         if ( menus[i] ) delete menus[i];
     } // for
@@ -221,17 +221,17 @@ int readInIndex( istream & sin ) {
     int index = -1;
     sin >> index;
     if ( index >= 0 && index <= 9 ) return index;
-    sinCleanup( sin ); // try to fix sin   
+    sinCleanup( sin ); // try to fix sin
     throw BadIndex{};
 } // readInIndex
 
 string readInName( istream & sin ) {
     char quotes;
     string name;
-    
+
     sin >> quotes;
     getline( sin, name, '"');
-    
+
     if ( sin.fail() ) {
         sinCleanup( sin );
         throw SyntaxError{};

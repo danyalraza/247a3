@@ -23,7 +23,7 @@ ComponentIterator::IterNode::IterNode(MenuComponent *m) : cursor_{-1}, node_{m} 
 bool ComponentIterator::hasNext() {
   while ( !istack_.empty() ) {
     IterNode *top = istack_.top();
-    if ( top->cursor_ < top->node_->size() ) {
+    if ( top->cursor_ < top->node_->numChildren() ) {
       return true;
     }
     istack_.pop();
