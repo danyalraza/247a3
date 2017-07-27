@@ -88,7 +88,7 @@ int main(int argc, char* argv[]) {
         });
         cout << remaining << endl;
 
-        cout << "Letters used : ";
+        cout << "Letters used: ";
         ostream_iterator<char> out_iter(cout, " ");
         copy(guessed.begin(), guessed.end(), out_iter);
         cout << endl;
@@ -136,12 +136,11 @@ int main(int argc, char* argv[]) {
         if (guesses_remaining == 0) {
           cout << "You LOSE!  The word was \"" << word << "\".\n";
         }
-
+      }
       char ans;
       cout << "Do you want to play again? [Y/N] ";
       cin >> ans;
       if (toupper(ans) != 'Y') break;
-      }
   }
   return 0;
 }
