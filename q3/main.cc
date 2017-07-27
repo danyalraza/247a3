@@ -23,7 +23,7 @@ bool gotWord(vector<char> guessed, string word) {
 }
 
 bool correctGuess(vector<char> guessed, string word, char c) {
-  bool correct = (word.find(word.begin(), word.end(), c) != word.end())
+  bool correct = (find(word.begin(), word.end(), c) != word.end());
   return correct;
 }
 
@@ -39,10 +39,11 @@ int main(int argc, char* argv[]) {
         return -1;
     }
     if (argc >= 3) {
-        seed = atoi(argv[2]);
+    seed = atoi(argv[2]);
     mt19937 random(seed);
     // Read words from file into vector
     ifstream inFile(filename);
+    }
     if (!inFile) {
         cout << "Error: Could not open file \"" << filename << "\"." << endl;
         return -1;
@@ -51,7 +52,7 @@ int main(int argc, char* argv[]) {
     istream_iterator<string> eof;
     vector<string> unfiltered(in_iter, eof);
     vector<string> words;
-    openedFile.close();
+    inFile.close();
 
     // Filter words
     remove_copy_if(unfiltered.begin(), unfiltered.end(), back_inserter(words),
@@ -82,7 +83,7 @@ int main(int argc, char* argv[]) {
             remaining.push_back(c);
           }
           else {
-            remaining.push_back("-");
+            remaining.push_back('-');
           }
           return remaining;
         });
@@ -143,5 +144,5 @@ int main(int argc, char* argv[]) {
       if (toupper(ans) != 'Y') break;
       }
   }
-  remainingGuesses--;
+  return 0;
 }
