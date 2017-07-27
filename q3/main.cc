@@ -23,7 +23,7 @@ bool gotWord(vector<char> guessed, string word) {
 }
 
 bool correctGuess(vector<char> guessed, string word, char c) {
-  bool correct = (find(word.begin(), word.end(), c) != word.end());
+  bool correct = (find(word.begin(), word.end(), tolower(c)) != word.end() && find(word.begin(), word.end(), toupper(c)) != word.end());
   return correct;
 }
 
