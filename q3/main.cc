@@ -22,7 +22,7 @@ bool gotWord(vector<char> guessed, string word) {
   return false;
 }
 
-bool correctGuess(vector<char> guessed, word, char c) {
+bool correctGuess(vector<char> guessed, string word, char c) {
   bool correct = (word.find(word.begin(), word.end(), c) != word.end())
   return correct;
 }
@@ -49,14 +49,15 @@ int main(int argc, char* argv[]) {
     }
     istream_iterator<string> in_iter(inFile);
     istream_iterator<string> eof;
-    vector<string> unfiltered(in_iter, eof)
+    vector<string> unfiltered(in_iter, eof);
     vector<string> words;
     openedFile.close();
 
     // Filter words
     remove_copy_if(unfiltered.begin(), unfiltered.end(), back_inserter(words),
         [](string &word) -> bool {
-            bool nonalpha = find_if(word.begin(), word.end(), [](char c) return !isalpha(c)) != word.end();
+            bool nonalpha = find_if(word.begin(), word.end(), [](char c) {
+              return !isalpha(c)}) != word.end();
             return (word.length() < 6 || nonalpha);
     });
     if (words.size() == 0) {
