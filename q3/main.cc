@@ -121,6 +121,7 @@ int main(int argc, char* argv[]) {
             cout << correct << endl;
             if (correct) {
               bool finished = gotWord(guessed, word);
+              cout << finished << endl;
               if (finished) {
                 cout << "You WIN!  The word was \"" << word << "\".\n";
                 break;
