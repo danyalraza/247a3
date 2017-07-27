@@ -10,11 +10,10 @@ $(EXEC): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) -o $(EXEC) $(OBJECTS)
 	strip $(EXEC)
 
-%.o: %.cc 
+%.o: %.cc
 	$(CXX) -c -o $@ $< $(CXXFLAGS)
 
 clean:
 	rm -f *.o $(EXEC) $(OBJECTS) $(DEPENDS)
 
 -include ${DEPENDS}
-
