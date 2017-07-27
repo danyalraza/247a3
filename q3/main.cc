@@ -118,6 +118,7 @@ int main(int argc, char* argv[]) {
           else {
             guessed.push_back(letter);
             bool correct = correctGuess(guessed, word, letter);
+            cout << correct << endl;
             if (correct) {
               bool finished = gotWord(guessed, word);
               if (finished) {
