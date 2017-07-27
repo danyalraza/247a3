@@ -27,8 +27,6 @@ bool correctGuess(vector<char> guessed, string word, char c) {
   return correct;
 }
 
-
-
 int main(int argc, char* argv[]) {
     string filename;
     int seed = 0;
@@ -78,7 +76,7 @@ int main(int argc, char* argv[]) {
         string remaining;
         cout << "Word: ";
         remaining = accumulate(word.begin(), word.end(), string(), [guessed](string &remaining, char c) {
-          if (alreadyGuessed(guessed, c)) {
+          if (alreadyGuessed(guessed, tolower(c)) || alreadyGuessed(guessed, toupper(c))) {
             remaining.push_back(c);
           }
           else {
