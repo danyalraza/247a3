@@ -93,7 +93,7 @@ int main(int argc, char* argv[]) {
         copy(guessed.begin(), guessed.end(), out_iter);
         cout << endl;
 
-        if (guessed_remianing == 1) {
+        if (guesses_remaining == 1) {
           cout << "You have 1 life left." << endl;
         }
         else {
@@ -104,7 +104,7 @@ int main(int argc, char* argv[]) {
         string guess;
         cin >> guess;
 
-        if (guess.legth() > 1) {
+        if (guess.length() > 1) {
           if (guess == word) {
             cout << "You WIN!";
           }
