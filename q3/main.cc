@@ -109,6 +109,7 @@ int main(int argc, char* argv[]) {
           else {
             cout << "You LOSE!  The word was \"" << word << "\".\n";
           }
+          break;
         }
         else {
           char letter = tolower(guess[0]);
@@ -135,6 +136,7 @@ int main(int argc, char* argv[]) {
 
         if (guesses_remaining == 0) {
           cout << "You LOSE!  The word was \"" << word << "\".\n";
+          break;
         }
       }
       char ans;
