@@ -16,7 +16,7 @@ bool alreadyGuessed(vector<char> guessed, char c) {
 
 bool gotWord(vector<char> guessed, string word) {
   int count = count_if(word.begin(), word.end(), [guessed](char c) {
-    return alreadyGuessed(guessed, c);
+    return (alreadyGuessed(guessed, tolower(c)) || alreadyGuessed(guessed, toupper(c)));
   });
   if (count == word.size()) return true;
   return false;
